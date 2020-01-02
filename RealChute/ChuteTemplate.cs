@@ -18,7 +18,7 @@ using Object = UnityEngine.Object;
 
 namespace RealChute
 {
-    public class ChuteTemplate
+    public class ChuteTemplate : PartModule
     {
         #region Propreties
         //All Parachutes objects on the part
@@ -330,7 +330,7 @@ namespace RealChute
             MaterialsLibrary.Instance.TryGetMaterial(this.parachute.material, ref this.material);
             this.templateGUI.materialsId = MaterialsLibrary.Instance.GetMaterialIndex(this.parachute.material);
 
-            if (HighLogic.LoadedSceneIsEditor)
+            if (HighLogic.LoadedSceneIsEditor || this.vessel.isEVA)
             {
                 if (this.Textures != null)
                 {
